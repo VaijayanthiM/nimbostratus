@@ -104,13 +104,13 @@ def cmd_handler(args):
     
     try:
         # Very insecure, everyone can connect to this MySQL instance
-        sg = conn.create_dbsecurity_group(security_group_name, 'All hosts can connect')
-        sg.authorize(cidr_ip='0.0.0.0/0')
+        #sg = conn.create_dbsecurity_group(security_group_name, 'All hosts can connect')
+        #sg.authorize(cidr_ip='0.0.0.0/0')
         
         # Just in case we wait for it to be available
         db_clone = wait_for_available_db(conn, restored_instance)
         
-        db_clone.modify(security_groups=[sg])
+        #db_clone.modify(security_groups=[sg])
     except Exception, e:
         logging.critical('Failed to create and apply DB security group: "%s"' % e.error_message)
         return

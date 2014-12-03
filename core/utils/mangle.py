@@ -9,15 +9,17 @@ import httpretty
 
 NOT_FOUND = '404 - Not Found'
 # 'http://ec2-54-254-24-239.ap-southeast-1.compute.amazonaws.com/?url=%s'
-VULN_URL = ''
+VULN_URL = 'http://ec2-54-169-17-7.ap-southeast-1.compute.amazonaws.com/?url=%s'
 
 
 def mangle(method, uri, headers):
     '''
     See help at common_arguments.add_mangle_arguments to understand what this is.
     '''
+
+    logging.info('uri is %s' %uri)
     mangled_url = VULN_URL % uri
-    
+    logging.info('mangle url %s' %mangled_url)
     logging.debug('Requesting %s' % mangled_url)
     try:
         response = requests.get(mangled_url)

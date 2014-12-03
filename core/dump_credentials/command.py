@@ -39,6 +39,7 @@ def get_metadata_credentials():
     if not meta_data:
         logging.debug('Failed to contact instance meta-data server.')
     else:
+	print("meta_dat values", meta_data.values()[0])
         security = meta_data.values()[0]
         access_key = security['AccessKeyId']
         secret_key = security['SecretAccessKey']
@@ -49,11 +50,13 @@ def get_metadata_credentials():
 def get_local_credentials():
     provider = get_default()
     provider.get_credentials()
-    
+     
     access_key = provider.get_access_key()
     secret_key = provider.get_secret_key()
     security_token = provider.get_security_token()
-    
+    print("local", access_key)
+    print("local secret", secret_key)
+    print("local getdefault", provider)   
     print_credentials(access_key, secret_key, security_token)
 
 def print_credentials(access_key, secret_key, security_token):

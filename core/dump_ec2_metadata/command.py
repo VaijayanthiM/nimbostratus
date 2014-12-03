@@ -79,7 +79,7 @@ def handle_instance_metadata():
     '''
     meta_data = get_instance_metadata()
     logging.debug(pprint.pformat(meta_data))
-    
+    print("test metadata", meta_data)    
     logging.info('Instance type: %s' % meta_data['instance-type'])
     logging.info('AMI ID: %s' % meta_data['ami-id'])
     logging.info('Security groups: %s' % meta_data['security-groups'])
